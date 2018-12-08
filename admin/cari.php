@@ -1,83 +1,6 @@
 <?php
-include 'config.php';
+include 'header.php';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SILABUS | UNPKEDIRI</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-  <!-- daterange picker -->
-  <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
-  <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-  <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="plugins/iCheck/all.css">
-  <!-- Bootstrap Color Picker -->
-  <link rel="stylesheet" href="bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
-  <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
-  <!-- Select2 -->
-  <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
-  <!-- Google Font -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
-</head>
-<body class="hold-transition skin-red-light sidebar-mini">
-<div class="wrapper">
-
-  <header class="main-header">
-    <!-- Logo -->
-    <a href="index.php" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>SLB</b></span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>SI</b>LABUS</span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-      <li style="padding-top:5px; padding-bottom:5px">
-        <a href="login.html" style="padding-left:30px; padding-right:30px; padding-top:10px; height:40px;" class="btn btn-block btn-primary bg-success">LOGIN</a>
-      </li>
-      <li style="padding-left:10px; padding-right:10px; padding-top:5px; padding-bottom:5px">
-        <a href="register.html" style="padding-left:30px; padding-right:30px; padding-top:10px; height:40px;" class="btn btn-block btn-primary btn-success">DAFTAR</a>
-      </li>
-    </ul>
-      </div>
-    </nav>
-  </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -119,7 +42,7 @@ include 'config.php';
     <section class="content">
 
       <!-- SELECT2 EXAMPLE -->
-      <div class="box box-default">
+      <div class="box box-default" align=>
         <div class="box-header with-border">
           <h3 class="box-title">Parameter Pencarian</h3>
           <div class="box-tools pull-right">
@@ -135,7 +58,6 @@ include 'config.php';
               <div class="form-group">
                 <label>Gedung Laboratorium</label>
                 <select class="form-control select2" style="width: 100%;" id="gedung">
-                  <option selected="selected">Pilih gedung</option>
                   <option>F1</option>
                   <option>F2</option>
                   <option>F3</option>
@@ -180,56 +102,11 @@ include 'config.php';
           <div class="modal-dialog" style="width: 1150px">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Default Modal</h4>
+                <h4 class="modal-title">Hasil Pencarian</h4>
               </div>
               <div class="modal-body" id="data_lab">
-                <div class="box-body">
-                  <table id="example2" class="table table-bordered table-striped" style="align-items: center;">
-
-                    <thead>
-                      <tr>
-                        <th rowspan="2" style="text-align: center;">JAM</th>
-                        <th colspan="5" style="text-align: center;">HARI</th>
-                      </tr>
-                      <tr style="text-align: center;">
-                        <td>SENIN</td>
-                        <td>SELASA</td>
-                        <td>RABU</td>
-                        <td>KAMIS</td>
-                        <td>JUMAT</td>
-                      </tr>
-                    </thead>
-                    <tbody style="text-align: center;">
-
-                      <?php
-                      include "config.php";
-                      $qw = mysql_query("SELECT * from tbwaktu");
-                      $qh = mysql_query("SELECT * from tbhari");
-                      $jw = mysql_num_rows($qw);
-                      $jh = mysql_num_rows($qh);
-                      $dw = mysql_fetch_array($qw);
-
-                      for($x=1;$x<=$jw;$x++){
-                        $query0 = mysql_query("SELECT waktu from tbwaktu t WHERE t.idwaktu='$x'");
-                        $data0 = mysql_fetch_array($query0);
-                        echo "<tr><td>".$data0['waktu']."</td>";
-                        for($y=1;$y<=$jh;$y++){
-                          $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='F3' AND w.idwaktu='$x' AND h.idhari='$y'");
-                          $datanya = mysql_fetch_array($query);
-                          echo "<td>".$datanya['keterangan']."</td>";
-                        }
-                        echo "</tr>";
-                      }
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                 
               </div>
             </div>
@@ -238,29 +115,6 @@ include 'config.php';
           <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
-
-        <div class="modal modal-primary fade" id="modal-primary">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Primary Modal</h4>
-              </div>
-              <div class="modal-body">
-                <p>One fine body&hellip;</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-
     </section>
     <!-- /.content -->
   </div>
@@ -470,34 +324,34 @@ include 'config.php';
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Select2 -->
-<script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="../bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- InputMask -->
-<script src="plugins/input-mask/jquery.inputmask.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="../plugins/input-mask/jquery.inputmask.js"></script>
+<script src="../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="../plugins/input-mask/jquery.inputmask.extensions.js"></script>
 <!-- date-range-picker -->
-<script src="bower_components/moment/min/moment.min.js"></script>
-<script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="../bower_components/moment/min/moment.min.js"></script>
+<script src="../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap datepicker -->
-<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- bootstrap color picker -->
-<script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<script src="../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
-<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- SlimScroll -->
-<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- iCheck 1.0.1 -->
-<script src="plugins/iCheck/icheck.min.js"></script>
+<script src="../plugins/iCheck/icheck.min.js"></script>
 <!-- FastClick -->
-<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<script src="../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="../dist/js/demo.js"></script>
 <!-- Page script -->
 <script>
   $(function () {
@@ -574,12 +428,12 @@ include 'config.php';
       // membuat variabel id, nilainya dari attribut id pada button
       // id="'.$row['id'].'" -> data id dari database ya sob, jadi dinamis nanti id nya
       var gedung =  document.getElementById("gedung").value;
-      //var gedung2 = $(this).attr("id");
+      var tanggal = document.getElementById("datepicker").value;
       // memulai ajax
       $.ajax({
         url: 'view.php',  // set url -> ini file yang menyimpan query tampil detail data siswa
         method: 'post',   // method -> metodenya pakai post. Tahu kan post? gak tahu? browsing aja :)
-        data: {gedung:gedung},    // nah ini datanya -> {id:id} = berarti menyimpan data post id yang nilainya dari = var id = $(this).attr("id");
+        data: {gedung:gedung, tanggal:tanggal},    // nah ini datanya -> {id:id} = berarti menyimpan data post id yang nilainya dari = var id = $(this).attr("id");
         success:function(data){   // kode dibawah ini jalan kalau sukses
           $('#data_lab').html(data);  // mengisi konten dari -> <div class="modal-body" id="data_siswa">
           $('#myModal').modal("show");  // menampilkan dialog modal nya

@@ -1,7 +1,11 @@
 <?php
-require_once("config.php");
+include "../config.php";
 $lab = $_POST['gedung'];
-if($lab=="F1"||$lab=="F2"||$lab=="F3"||$lab=="G1"||$lab=="G2"||$lab=="G5"||$lab=="L12"){
+$tanggal = $_POST['tanggal'];
+$xtgl = date('Y-m-d', strtotime($tanggal));
+
+
+if(!empty($tanggal)){
 ?>
                   <table id="example2" class="table table-bordered table-striped" style="align-items: center;">
 
@@ -33,7 +37,7 @@ if($lab=="F1"||$lab=="F2"||$lab=="F3"||$lab=="G1"||$lab=="G2"||$lab=="G5"||$lab=
                         $data0 = mysql_fetch_array($query0);
                         echo "<tr><td>".$data0['waktu']."</td>";
                         for($y=1;$y<=$jh;$y++){
-                          $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='$lab' AND w.idwaktu='$x' AND h.idhari='$y'");
+                          $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='$lab' AND j.tanggal='$xtgl' AND w.idwaktu='$x' AND h.idhari='$y'");
                           $datanya = mysql_fetch_array($query);
                           echo "<td>".$datanya['keterangan']."</td>";
                         }
@@ -42,6 +46,19 @@ if($lab=="F1"||$lab=="F2"||$lab=="F3"||$lab=="G1"||$lab=="G2"||$lab=="G5"||$lab=
                       ?>
                     </tbody>
                   </table>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
+                    <p>Jadwal gedung
+                    <?php
+                      echo $lab;
+                    ?>
+                    pada tanggal
+                    <?php
+                      echo date('d-M-Y', strtotime($tanggal));
+                    ?>
+                    </p>
+                  </div>
+                  
 <?php } else {
   ?> <script type="text/javascript"> alert("Masukkan parameter pencarian!") </script> <?php
 }
