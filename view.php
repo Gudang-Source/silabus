@@ -1,9 +1,13 @@
 <?php
-require_once("config.php");
+include "config.php";
+?>
+<?php
 $lab = $_POST['gedung'];
 $tanggal = $_POST['tanggal'];
 $xtgl = date('Y-m-d', strtotime($tanggal));
-if($lab=="F1"||$lab=="F2"||$lab=="F3"||$lab=="G1"||$lab=="G2"||$lab=="G5"||$lab=="L12"){
+
+
+if(!empty($tanggal)){
 ?>
                   <table id="example2" class="table table-bordered table-striped" style="align-items: center;">
 
@@ -44,6 +48,19 @@ if($lab=="F1"||$lab=="F2"||$lab=="F3"||$lab=="G1"||$lab=="G2"||$lab=="G5"||$lab=
                       ?>
                     </tbody>
                   </table>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
+                    <p>Jadwal gedung
+                    <?php
+                      echo $lab;
+                    ?>
+                    pada tanggal
+                    <?php
+                      echo date('d-M-Y', strtotime($tanggal));
+                    ?>
+                    </p>
+                  </div>
+                  
 <?php } else {
   ?> <script type="text/javascript"> alert("Masukkan parameter pencarian!") </script> <?php
 }
