@@ -22,6 +22,8 @@ include "otoritas1.php";
       </li>
     <li><a href="cari.php"><i class="fa fa-search"></i> <span>Cari Jadwal</span></a>
     </li>
+    <li><a href="userman.php"><i class="fa fa-users"></i> <span>User Manager</span></a>
+    </li>
     </ul>  
   </section>
   <!-- /.sidebar -->
@@ -31,7 +33,7 @@ include "otoritas1.php";
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Dashboard
+        Jadwal
       </h1>
       <ol class="breadcrumb">
         <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
