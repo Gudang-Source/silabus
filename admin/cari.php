@@ -20,6 +20,8 @@ include 'header.php';
       </li>
     <li  class="treeview active"><a href="cari.php"><i class="fa fa-search"></i> <span>Cari Jadwal</span></a>
     </li>
+    <li><a href="userman.php"><i class="fa fa-users"></i> <span>User Manager</span></a>
+    </li>
     </ul>  
     </section>
     <!-- /.sidebar -->
