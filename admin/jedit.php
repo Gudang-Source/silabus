@@ -25,9 +25,9 @@ include "header.php";
     <li><a href="cari.php"><i class="fa fa-search"></i> <span>Pencarian</span></a>
     <li><a href="reservasi.php"><i class="fa fa-search-plus"></i> <span>Reservasi</span></a>
     </li>
-    <li class="treeview active"><a href="userman.php"><i class="fa fa-users"></i> <span>Userman</span></a>
+    <li><a href="userman.php"><i class="fa fa-users"></i> <span>Userman</span></a>
     </li>
-    <li ><a href="labman.php"><i class="fa fa-folder-open-o"></i> <span>jEdit</span></a>
+    <li class="treeview active"><a href="#"><i class="fa fa-folder-open-o"></i> <span>jEdit</span></a>
     <li ><a href="history.php"><i class="fa fa-book"></i> <span>Logs</span></a>
     </ul>
   </section>

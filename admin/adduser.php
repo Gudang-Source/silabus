@@ -27,7 +27,8 @@ if (mysql_num_rows($qry)>0){
 			</script>
 		<?php
 	} else {
-		mysql_query("INSERT into tbuser set username='$username', password='$password', ni='$ni', nama='$nama', otoritas='$otoritas'");
+		$xpass = str_rot13($password);
+		mysql_query("INSERT into tbuser set username='$username', password='$xpass', ni='$ni', nama='$nama', otoritas='$otoritas'");
   		?>
 			<script language="javascript">
 				alert('User berhasil ditambahkan.');

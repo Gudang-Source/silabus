@@ -8,7 +8,7 @@ include 'header.php';
       <!-- Sidebar user panel -->
       
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
+          <ul class="sidebar-menu" data-widget="tree">
     <li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
     </li>
       <li>
@@ -18,7 +18,7 @@ include 'header.php';
           </span>
         </a>
       </li>
-    <li  class="treeview active"><a href="cari.php"><i class="fa fa-search"></i> <span>Cari Jadwal</span></a>
+    <li  class="treeview active"><a href="cari.php"><i class="fa fa-search"></i> <span>Pencarian</span></a>
     </li>
     </ul>  
     </section>
@@ -47,7 +47,7 @@ include 'header.php';
           <h3 class="box-title">Parameter Pencarian</h3>
           <div class="box-tools pull-right">
             
- 
+
           </div>
         </div>
         <br>
@@ -65,6 +65,21 @@ include 'header.php';
                   <option>G2</option>
                   <option>G5</option>
                   <option>L12</option>
+                </select>
+              </div>
+              <!-- /.form-group -->
+              <br>
+              <div class="form-group">
+                <label>Waktu</label>
+                <select class="form-control select2" style="width: 100%;" id="waktu">
+
+
+<?php
+$query = mysql_query("select * from tbwaktu");
+while ($data = mysql_fetch_assoc($query)) {
+  echo '<option value="'.$data['idwaktu'].'">'.$data['waktu'].'</option>';
+}
+?>
                 </select>
               </div>
               <!-- /.form-group -->
@@ -119,15 +134,9 @@ include 'header.php';
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-    </div>
-    
-  </footer>
+  
 
-  <!-- Control Sidebar -->
-
-  <!-- /.control-sidebar -->
+  
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
@@ -239,12 +248,13 @@ include 'header.php';
       // membuat variabel id, nilainya dari attribut id pada button
       // id="'.$row['id'].'" -> data id dari database ya sob, jadi dinamis nanti id nya
       var gedung =  document.getElementById("gedung").value;
+      var waktu =  document.getElementById("waktu").value;
       var tanggal = document.getElementById("datepicker").value;
       // memulai ajax
       $.ajax({
         url: 'view.php',  // set url -> ini file yang menyimpan query tampil detail data siswa
         method: 'post',   // method -> metodenya pakai post. Tahu kan post? gak tahu? browsing aja :)
-        data: {gedung:gedung, tanggal:tanggal},    // nah ini datanya -> {id:id} = berarti menyimpan data post id yang nilainya dari = var id = $(this).attr("id");
+        data: {gedung:gedung, idwaktu:waktu, tanggal:tanggal},    // nah ini datanya -> {id:id} = berarti menyimpan data post id yang nilainya dari = var id = $(this).attr("id");
         success:function(data){   // kode dibawah ini jalan kalau sukses
           $('#data_lab').html(data);  // mengisi konten dari -> <div class="modal-body" id="data_siswa">
           $('#myModal').modal("show");  // menampilkan dialog modal nya
@@ -255,3 +265,5 @@ include 'header.php';
 </script>
 </body>
 </html>
+
+

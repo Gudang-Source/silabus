@@ -20,8 +20,10 @@ include 'otoritas2.php';
           </span>
         </a>
       </li>
-    <li><a href="cari.php"><i class="fa fa-search"></i> <span>Cari Jadwal</span></a>
+    <li><a href="cari.php"><i class="fa fa-search-plus"></i> <span>Reservasi</span></a>
     </li>
+      <li><a href="edituser.php?id=<?php echo $_SESSION['iduser']; ?>"><i class="fa fa-sliders"></i> <span>Preferensi</span></a></li>
+      <li ><a href="history.php"><i class="fa fa-history"></i> <span>Riwayat</span></a>
     </ul>  
   </section>
   <!-- /.sidebar -->
@@ -68,7 +70,7 @@ include 'otoritas2.php';
 
               <thead>
                 <tr>
-                  <th rowspan="2" style="text-align: center;">JAM</th>
+                  <th rowspan="2" style="text-align: center; padding-bottom: 25px">JAM</th>
                   <th colspan="5" style="text-align: center;">HARI</th>
                 </tr>
                 <tr style="text-align: center;">
@@ -94,7 +96,9 @@ include 'otoritas2.php';
                   $data0 = mysql_fetch_array($query0);
                   echo "<tr><td>".$data0['waktu']."</td>";
                   for($y=1;$y<=$jh;$y++){
-                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='F1' AND w.idwaktu='$x' AND h.idhari='$y'");
+                    //$query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='F1' AND w.idwaktu='$x' AND h.idhari='$y'");
+                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='F1' AND j.iduser='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='F1' and j.status='1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK(CURDATE(), 1))");
+
                     $datanya = mysql_fetch_array($query);
                     echo "<td>".$datanya['keterangan']."</td>";
                   }
@@ -133,7 +137,7 @@ include 'otoritas2.php';
 
               <thead>
                 <tr>
-                  <th rowspan="2" style="text-align: center;">JAM</th>
+                  <th rowspan="2" style="text-align: center; padding-bottom: 25px">JAM</th>
                   <th colspan="5" style="text-align: center;">HARI</th>
                 </tr>
                 <tr style="text-align: center;">
@@ -159,7 +163,7 @@ include 'otoritas2.php';
                   $data0 = mysql_fetch_array($query0);
                   echo "<tr><td>".$data0['waktu']."</td>";
                   for($y=1;$y<=$jh;$y++){
-                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='F2' AND w.idwaktu='$x' AND h.idhari='$y' and j.status='1'");
+                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='F2' AND j.iduser='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='F2' and j.status='1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK(CURDATE(), 1))");
                     $datanya = mysql_fetch_array($query);
                     echo "<td>".$datanya['keterangan']."</td>";
                   }
@@ -198,7 +202,7 @@ include 'otoritas2.php';
 
               <thead>
                 <tr>
-                  <th rowspan="2" style="text-align: center;">JAM</th>
+                  <th rowspan="2" style="text-align: center; padding-bottom: 25px">JAM</th>
                   <th colspan="5" style="text-align: center;">HARI</th>
                 </tr>
                 <tr style="text-align: center;">
@@ -224,7 +228,7 @@ include 'otoritas2.php';
                   $data0 = mysql_fetch_array($query0);
                   echo "<tr><td>".$data0['waktu']."</td>";
                   for($y=1;$y<=$jh;$y++){
-                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='F3' AND w.idwaktu='$x' AND h.idhari='$y'");
+                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='F3' AND j.iduser='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='F3' and j.status='1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK(CURDATE(), 1))");
                     $datanya = mysql_fetch_array($query);
                     echo "<td>".$datanya['keterangan']."</td>";
                   }
@@ -262,7 +266,7 @@ include 'otoritas2.php';
 
               <thead>
                 <tr>
-                  <th rowspan="2" style="text-align: center;">JAM</th>
+                  <th rowspan="2" style="text-align: center; padding-bottom: 25px">JAM</th>
                   <th colspan="5" style="text-align: center;">HARI</th>
                 </tr>
                 <tr style="text-align: center;">
@@ -288,7 +292,7 @@ include 'otoritas2.php';
                   $data0 = mysql_fetch_array($query0);
                   echo "<tr><td>".$data0['waktu']."</td>";
                   for($y=1;$y<=$jh;$y++){
-                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='G1' AND w.idwaktu='$x' AND h.idhari='$y'");
+                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='G1' AND j.iduser='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='G1' and j.status='1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK(CURDATE(), 1))");
                     $datanya = mysql_fetch_array($query);
                     echo "<td>".$datanya['keterangan']."</td>";
                   }
@@ -328,7 +332,7 @@ include 'otoritas2.php';
 
               <thead>
                 <tr>
-                  <th rowspan="2" style="text-align: center;">JAM</th>
+                  <th rowspan="2" style="text-align: center; padding-bottom: 25px">JAM</th>
                   <th colspan="5" style="text-align: center;">HARI</th>
                 </tr>
                 <tr style="text-align: center;">
@@ -354,7 +358,7 @@ include 'otoritas2.php';
                   $data0 = mysql_fetch_array($query0);
                   echo "<tr><td>".$data0['waktu']."</td>";
                   for($y=1;$y<=$jh;$y++){
-                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='G2' AND w.idwaktu='$x' AND h.idhari='$y'");
+                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='G2' AND j.iduser='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='G2' and j.status='1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK(CURDATE(), 1))");
                     $datanya = mysql_fetch_array($query);
                     echo "<td>".$datanya['keterangan']."</td>";
                   }
@@ -393,7 +397,7 @@ include 'otoritas2.php';
 
               <thead>
                 <tr>
-                  <th rowspan="2" style="text-align: center;">JAM</th>
+                  <th rowspan="2" style="text-align: center; padding-bottom: 25px">JAM</th>
                   <th colspan="5" style="text-align: center;">HARI</th>
                 </tr>
                 <tr style="text-align: center;">
@@ -419,7 +423,7 @@ include 'otoritas2.php';
                   $data0 = mysql_fetch_array($query0);
                   echo "<tr><td>".$data0['waktu']."</td>";
                   for($y=1;$y<=$jh;$y++){
-                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='G5' AND w.idwaktu='$x' AND h.idhari='$y'");
+                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='G5' AND j.iduser='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='G5' and j.status='1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK(CURDATE(), 1))");
                     $datanya = mysql_fetch_array($query);
                     echo "<td>".$datanya['keterangan']."</td>";
                   }
@@ -458,7 +462,7 @@ include 'otoritas2.php';
 
               <thead>
                 <tr>
-                  <th rowspan="2" style="text-align: center;">JAM</th>
+                  <th rowspan="2" style="text-align: center; padding-bottom: 25px">JAM</th>
                   <th colspan="5" style="text-align: center;">HARI</th>
                 </tr>
                 <tr style="text-align: center;">
@@ -484,7 +488,7 @@ include 'otoritas2.php';
                   $data0 = mysql_fetch_array($query0);
                   echo "<tr><td>".$data0['waktu']."</td>";
                   for($y=1;$y<=$jh;$y++){
-                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='L12' AND w.idwaktu='$x' AND h.idhari='$y'");
+                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='L12' AND j.iduser='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='L12' and j.status='1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK(CURDATE(), 1))");
                     $datanya = mysql_fetch_array($query);
                     echo "<td>".$datanya['keterangan']."</td>";
                   }
@@ -549,194 +553,7 @@ include 'otoritas2.php';
 <!-- /.content-wrapper -->
 
 <!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-  <!-- Create the tabs -->
-  <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-    <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-    <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-  </ul>
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <!-- Home tab content -->
-    <div class="tab-pane" id="control-sidebar-home-tab">
-      <h3 class="control-sidebar-heading">Recent Activity</h3>
-      <ul class="control-sidebar-menu">
-        <li>
-          <a href="javascript:void(0)">
-            <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
-            <div class="menu-info">
-              <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-              <p>Will be 23 on April 24th</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="menu-icon fa fa-user bg-yellow"></i>
-
-            <div class="menu-info">
-              <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-
-              <p>New phone +1(800)555-1234</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-            <div class="menu-info">
-              <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-              <p>nora@example.com</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-            <div class="menu-info">
-              <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-              <p>Execution time 5 seconds</p>
-            </div>
-          </a>
-        </li>
-      </ul>
-      <!-- /.control-sidebar-menu -->
-
-      <h3 class="control-sidebar-heading">Tasks Progress</h3>
-      <ul class="control-sidebar-menu">
-        <li>
-          <a href="javascript:void(0)">
-            <h4 class="control-sidebar-subheading">
-              Custom Template Design
-              <span class="label label-danger pull-right">70%</span>
-            </h4>
-
-            <div class="progress progress-xxs">
-              <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <h4 class="control-sidebar-subheading">
-              Update Resume
-              <span class="label label-success pull-right">95%</span>
-            </h4>
-
-            <div class="progress progress-xxs">
-              <div class="progress-bar progress-bar-success" style="width: 95%"></div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <h4 class="control-sidebar-subheading">
-              Laravel Integration
-              <span class="label label-warning pull-right">50%</span>
-            </h4>
-
-            <div class="progress progress-xxs">
-              <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <h4 class="control-sidebar-subheading">
-              Back End Framework
-              <span class="label label-primary pull-right">68%</span>
-            </h4>
-
-            <div class="progress progress-xxs">
-              <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-            </div>
-          </a>
-        </li>
-      </ul>
-      <!-- /.control-sidebar-menu -->
-
-    </div>
-    <!-- /.tab-pane -->
-    <!-- Stats tab content -->
-    <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-    <!-- /.tab-pane -->
-    <!-- Settings tab content -->
-    <div class="tab-pane" id="control-sidebar-settings-tab">
-      <form method="post">
-        <h3 class="control-sidebar-heading">General Settings</h3>
-
-        <div class="form-group">
-          <label class="control-sidebar-subheading">
-            Report panel usage
-            <input type="checkbox" class="pull-right" checked>
-          </label>
-
-          <p>
-            Some information about this general settings option
-          </p>
-        </div>
-        <!-- /.form-group -->
-
-        <div class="form-group">
-          <label class="control-sidebar-subheading">
-            Allow mail redirect
-            <input type="checkbox" class="pull-right" checked>
-          </label>
-
-          <p>
-            Other sets of options are available
-          </p>
-        </div>
-        <!-- /.form-group -->
-
-        <div class="form-group">
-          <label class="control-sidebar-subheading">
-            Expose author name in posts
-            <input type="checkbox" class="pull-right" checked>
-          </label>
-
-          <p>
-            Allow the user to show his name in blog posts
-          </p>
-        </div>
-        <!-- /.form-group -->
-
-        <h3 class="control-sidebar-heading">Chat Settings</h3>
-
-        <div class="form-group">
-          <label class="control-sidebar-subheading">
-            Show me as online
-            <input type="checkbox" class="pull-right" checked>
-          </label>
-        </div>
-        <!-- /.form-group -->
-
-        <div class="form-group">
-          <label class="control-sidebar-subheading">
-            Turn off notifications
-            <input type="checkbox" class="pull-right">
-          </label>
-        </div>
-        <!-- /.form-group -->
-
-        <div class="form-group">
-          <label class="control-sidebar-subheading">
-            Delete chat history
-            <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-          </label>
-        </div>
-        <!-- /.form-group -->
-      </form>
-    </div>
-    <!-- /.tab-pane -->
-  </div>
-</aside>
 <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
    immediately after the control sidebar -->

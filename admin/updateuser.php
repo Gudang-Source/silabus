@@ -6,5 +6,5 @@ $password = $_POST['password'];
 $ni = $_POST['ni'];
 $otoritas = $_POST['otoritas'];
 $iduser = $_GET['iduser'];
-
-mysql_query("UPDATE tbuser SET username='$username', nama='$nama', password='$password', ni='$ni', otoritas='$otoritas' WHERE iduser='$iduser'");
+$xpassword = str_rot13($password);
+mysql_query("UPDATE tbuser SET username='$username', nama='$nama', password='$xpassword', ni='$ni', otoritas='$otoritas' WHERE iduser='$iduser'");

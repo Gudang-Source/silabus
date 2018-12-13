@@ -1,9 +1,8 @@
 <?php
 include"config.php";
 $username = $_POST['username'];
-$password = $_POST['password'];
+$password = str_rot13($_POST['password']);
 if($username==''){
-	session_destroy();
 	?>
 	<script language="javascript">
 		alert('Username atau Password salah!');
@@ -18,9 +17,11 @@ if($username==''){
 	$nama = $data['nama'];
 	$otoritas = $data['otoritas'];
 	$ni = $data['ni'];
+	$iduser = $data['iduser'];
 
 	if ($otoritas == 1){
 		session_start();
+		$_SESSION['iduser'] = $iduser;
 		$_SESSION['username'] = $namapengguna;
 		$_SESSION['nama'] = $nama;
 		$_SESSION['otoritas'] = $otoritas;
@@ -28,6 +29,7 @@ if($username==''){
 	}
 	else if ($otoritas== 2){
 		session_start();
+		$_SESSION['iduser'] = $iduser;
 		$_SESSION['username'] = $namapengguna;
 		$_SESSION['nama'] = $nama;
 		$_SESSION['ni'] = $ni;

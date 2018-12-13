@@ -1,6 +1,6 @@
 <?php
 include 'header.php';
-include 'otoritas2.php';
+$id = $_SESSION['iduser'];
 ?>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
@@ -19,7 +19,10 @@ include 'otoritas2.php';
           </span>
         </a>
       </li>
-    <li  class="treeview active"><a href="cari.php"><i class="fa fa-search"></i> <span>Cari Jadwal</span></a>
+    <li  class="treeview active"><a href="cari.php"><i class="fa fa-search-plus"></i> <span>Reservasi</span></a>
+    </li>
+	<li><a href="edituser.php?id=<?php echo $_SESSION['iduser']; ?>"><i class="fa fa-sliders"></i> <span>Preferensi</span></a></li>
+  <li ><a href="history.php"><i class="fa fa-history"></i> <span>Riwayat</span></a>
     </li>
     </ul>  
     </section>
@@ -31,11 +34,11 @@ include 'otoritas2.php';
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Cari Jadwal
+        Reservasi Lab
       </h1>
       <ol class="breadcrumb">
         <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Cari Jadwal</li>
+        <li class="active">Reservasi</li>
       </ol>
     </section>
     <br>
@@ -44,13 +47,7 @@ include 'otoritas2.php';
 
       <!-- SELECT2 EXAMPLE -->
       <div class="box box-default" align=>
-        <div class="box-header with-border">
-          <h3 class="box-title">Parameter Pencarian</h3>
-          <div class="box-tools pull-right">
-            
-
-          </div>
-        </div>
+        
         <br>
         <!-- /.box-header -->
         <div class="box-body">
@@ -71,18 +68,29 @@ include 'otoritas2.php';
               <!-- /.form-group -->
               <br>
               <div class="form-group">
-                <label>Waktu</label>
+                <label>Waktu Mulai</label>
                 <select class="form-control select2" style="width: 100%;" id="waktu">
-
-
-<?php
-$query = mysql_query("select * from tbwaktu");
-while ($data = mysql_fetch_assoc($query)) {
-  echo '<option value="'.$data['idwaktu'].'">'.$data['waktu'].'</option>';
-}
-?>
+					<?php
+					$query = mysql_query("select * from tbwaktu");
+					while ($data = mysql_fetch_assoc($query)) {
+					  echo '<option value="'.$data['idwaktu'].'">'.$data['waktu'].'</option>';
+					}
+					?>
                 </select>
               </div>
+			  
+			    <div class="form-group">
+                <label>Waktu Selesai</label>
+                <select class="form-control select2" style="width: 100%;" id="waktu2">
+					<?php
+					$query = mysql_query("select * from tbwaktu");
+					while ($data = mysql_fetch_assoc($query)) {
+					  echo '<option value="'.$data['idwaktu'].'">'.$data['waktu'].'</option>';
+					}
+					?>
+                </select>
+              </div>
+			  
               <!-- /.form-group -->
               <br>
               <div class="form-group">
@@ -95,11 +103,18 @@ while ($data = mysql_fetch_assoc($query)) {
                   <input type="text" class="form-control pull-right" id="datepicker">
 
                 </div>
-
-                <!-- /.input group -->
-              </div>
-              <br>
-              <button type="button" class="view_data btn btn-block btn-warning btn-flat" data-toggle="modal" data-target="#modal-default">Cari</button>
+             
+			 <br>
+			  <div class="form-group">
+                <label>Keterangan</label>           
+                <div>
+                  <textarea maxlength="30" class="textarea" placeholder="Maks. 30 karakter. Contoh :  3A-KRIPTO-Anwar"
+                            style="width: 100%; height: 40px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
+							id="keterangan"></textarea>
+                </div>
+			  </div>
+              
+              <button type="button" class="view_data btn btn-block btn-warning btn-flat" data-toggle="modal" data-target="#modal-default">Booking Lab</button>
               <br>
               <!-- /.form group -->
             </div>
@@ -120,7 +135,7 @@ while ($data = mysql_fetch_assoc($query)) {
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Hasil Pencarian</h4>
+                <h4 class="modal-title">Notifikasi</h4>
               </div>
               <div class="modal-body" id="data_lab">
                 
@@ -138,194 +153,7 @@ while ($data = mysql_fetch_assoc($query)) {
   
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Home tab content -->
-      <div class="tab-pane" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                <p>Will be 23 on April 24th</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-user bg-yellow"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-
-                <p>New phone +1(800)555-1234</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-                <p>nora@example.com</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-                <p>Execution time 5 seconds</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Custom Template Design
-                <span class="label label-danger pull-right">70%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Update Resume
-                <span class="label label-success pull-right">95%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-success" style="width: 95%"></div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Laravel Integration
-                <span class="label label-warning pull-right">50%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Back End Framework
-                <span class="label label-primary pull-right">68%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-      </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Some information about this general settings option
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Allow mail redirect
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Other sets of options are available
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Expose author name in posts
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Allow the user to show his name in blog posts
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <h3 class="control-sidebar-heading">Chat Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Show me as online
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Turn off notifications
-              <input type="checkbox" class="pull-right">
-            </label>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Delete chat history
-              <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-            </label>
-          </div>
-          <!-- /.form-group -->
-        </form>
-      </div>
-      <!-- /.tab-pane -->
-    </div>
-  </aside>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
@@ -399,7 +227,11 @@ while ($data = mysql_fetch_assoc($query)) {
     )
 
     //Date picker
+    var todayDate = new Date().getDate();
     $('#datepicker').datepicker({
+      startDate: new Date(),
+      endDate: new Date(new Date().setDate(todayDate + 14)),
+      daysOfWeekDisabled:[0,6],
       autoclose: true
     })
 
@@ -433,18 +265,21 @@ while ($data = mysql_fetch_assoc($query)) {
 <script>
   // ini menyiapkan dokumen agar siap grak :)
   $(document).ready(function(){
+
     // yang bawah ini bekerja jika tombol lihat data (class="view_data") di klik
     $('.view_data').click(function(){
       // membuat variabel id, nilainya dari attribut id pada button
       // id="'.$row['id'].'" -> data id dari database ya sob, jadi dinamis nanti id nya
       var gedung =  document.getElementById("gedung").value;
       var waktu =  document.getElementById("waktu").value;
+	  var waktu2 =  document.getElementById("waktu2").value;
       var tanggal = document.getElementById("datepicker").value;
+      var keterangan = document.getElementById("keterangan").value;
       // memulai ajax
       $.ajax({
         url: 'view.php',  // set url -> ini file yang menyimpan query tampil detail data siswa
         method: 'post',   // method -> metodenya pakai post. Tahu kan post? gak tahu? browsing aja :)
-        data: {gedung:gedung, idwaktu:waktu, tanggal:tanggal},    // nah ini datanya -> {id:id} = berarti menyimpan data post id yang nilainya dari = var id = $(this).attr("id");
+        data: {gedung:gedung, idwaktu:waktu, idwaktu2:waktu2, tanggal:tanggal, keterangan:keterangan},    // nah ini datanya -> {id:id} = berarti menyimpan data post id yang nilainya dari = var id = $(this).attr("id");
         success:function(data){   // kode dibawah ini jalan kalau sukses
           $('#data_lab').html(data);  // mengisi konten dari -> <div class="modal-body" id="data_siswa">
           $('#myModal').modal("show");  // menampilkan dialog modal nya

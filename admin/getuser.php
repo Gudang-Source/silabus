@@ -28,9 +28,9 @@ if (mysql_num_rows($qry) > 0) {
                   <td>'.$data["nama"].'</td>
                   <td>'.$data["ni"].'</td>
                   <td style="text-align: center;">
-	                  <button type="button" updatepass="'.$data["password"].'" updateid="updateuser.php?iduser='.$data["iduser"].'" updatenama="'.$data["nama"].'" updateusername="'.$data["username"].'" updateni="'.$data["ni"].'" updateotoritas="'.$data["otoritas"].'" class="fa fa-edit btn btn-warning updateButton" data-toggle="modal" data-target="#modal-default" style="height: 30px;" > Ubah</button>
+	                  <button type="button" updatepass="'.str_rot13($data["password"]).'" updateid="updateuser.php?iduser='.$data["iduser"].'" updatenama="'.$data["nama"].'" updateusername="'.$data["username"].'" updateni="'.$data["ni"].'" updateotoritas="'.$data["otoritas"].'" class="fa fa-edit btn btn-warning updateButton" data-toggle="modal" data-target="#modal-default" style="height: 30px;" > Ubah</button>
 	                  <span></span>
-	                  <button type="button" class="fa fa-trash-o btn btn-danger deleteButton" style="height: 30px;" onclick="window.location.href=`deluser.php?iduser='.$data["iduser"].'`"> Hapus</button>
+	                  <button type="button" class="fa fa-user-times btn btn-danger deleteButton" style="height: 30px;" onclick="window.location.href=`deluser.php?iduser='.$data["iduser"].'`"> Hapus</button>
                   </td>
                 </tr>';
 	}

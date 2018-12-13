@@ -20,9 +20,13 @@ include "header.php";
         
       </li>
 	  <li><a href="data.php"><i class="fa fa-calendar"></i> <span>Jadwal</span></a></li>
-    <li><a href="cari.php"><i class="fa fa-search"></i> <span>Cari Jadwal</span></a>
-    <li><a href="userman.php"><i class="fa fa-users"></i> <span>User Manager</span></a>
+    <li><a href="cari.php"><i class="fa fa-search"></i> <span>Pencarian</span></a>
+    <li><a href="reservasi.php"><i class="fa fa-search-plus"></i> <span>Reservasi</span></a>
     </li>
+    <li><a href="userman.php"><i class="fa fa-users"></i> <span>Userman</span></a>
+    </li>
+    <li ><a href="jedit.php"><i class="fa fa-folder-open-o"></i> <span>jEdit</span></a>
+    <li ><a href="history.php"><i class="fa fa-book"></i> <span>Logs</span></a>
     </ul>  
   </section>
   <!-- /.sidebar -->

@@ -1,5 +1,6 @@
 <?php
 include 'config.php';
+mysql_query("UPDATE tbjadwal SET status='2' WHERE tanggal < CURDATE()");
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,10 +69,10 @@ include 'config.php';
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
       <li style="padding-top:5px; padding-bottom:5px">
-        <a href="login.html" style="padding-left:30px; padding-right:30px; padding-top:10px; height:40px;" class="btn btn-block btn-primary bg-success">LOGIN</a>
+        <a href="login.html" style="padding-left:30px; padding-right:30px; padding-top:10px; height:40px;" class="btn btn-block btn-warning">LOGIN</a>
       </li>
       <li style="padding-left:10px; padding-right:10px; padding-top:5px; padding-bottom:5px">
-        <a href="register.html" style="padding-left:30px; padding-right:30px; padding-top:10px; height:40px;" class="btn btn-block btn-primary btn-success">DAFTAR</a>
+        <a href="register.html" style="padding-left:30px; padding-right:30px; padding-top:10px; height:40px;" class="btn btn-block btn-success">REGISTER</a>
       </li>
     </ul>
       </div>

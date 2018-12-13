@@ -1,5 +1,9 @@
 <?php
 include '../config.php';
+if (!isset($_SESSION)) {
+  session_start();
+}
+mysql_query("UPDATE tbjadwal SET status='2' WHERE tanggal < CURDATE()");
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,7 +74,7 @@ include '../config.php';
         <ul class="nav navbar-nav">
       
           <li style="padding-left:10px; padding-right:10px; padding-top:5px; padding-bottom:5px">
-            <a href="../logout.php" style="padding-left:30px; padding-right:30px; padding-top:10px; height:40px;" class="btn btn-block btn-primary">LOGOUT</a>
+            <a href="../logout.php" style="padding-left:30px; padding-right:30px; padding-top:10px; height:40px;" class="btn btn-block btn-warning"><span class="fa fa-sign-out"></span>LOGOUT</a>
           </li>
         </ul>
       </div>

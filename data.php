@@ -18,7 +18,7 @@ include 'header.php';
           </span>
         </a>
       </li>
-    <li><a href="cari.php"><i class="fa fa-search"></i> <span>Cari Jadwal</span></a>
+    <li><a href="cari.php"><i class="fa fa-search"></i> <span>Pencarian</span></a>
     </li>
     </ul>  
   </section>

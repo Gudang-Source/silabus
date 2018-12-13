@@ -1,5 +1,9 @@
 <?php
 include 'header.php';
+$totalUser = mysql_num_rows(mysql_query("SELECT * from tbuser WHERE iduser<>'1'"));
+$totalJadwal = mysql_num_rows(mysql_query("SELECT * from tbjadwal WHERE status='1'"));
+$totalJadwalBooking = mysql_num_rows(mysql_query("SELECT * from tbjadwal WHERE status='1' AND iduser<>'1'"));
+$totalJadwalTetap = mysql_num_rows(mysql_query("SELECT * from tbjadwal WHERE status='1' AND iduser='1'"));
 ?>
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
@@ -19,7 +23,7 @@ include 'header.php';
         
       </li>
 	  <li><a href="data.php"><i class="fa fa-calendar"></i> <span>Jadwal</span></a></li>
-    <li><a href="cari.php"><i class="fa fa-search"></i> <span>Cari Jadwal</span></a>
+    <li><a href="cari.php"><i class="fa fa-search"></i> <span>Pencarian</span></a>
     </li>
     </ul>  
   </section>
@@ -53,14 +57,14 @@ include 'header.php';
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px"></sup></h3>
+              <h3><?php echo $totalJadwal; ?><sup style="font-size: 20px"></sup></h3>
 
               <p>Total Jadwal</p>
             </div>
             <div class="icon">
               <i class="ion ion-grid"></i>
             </div>
-            <a href="#" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="data.php" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -68,14 +72,14 @@ include 'header.php';
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3><?php echo $totalJadwalTetap; ?></h3>
 
               <p>Jadwal Tetap</p>
             </div>
             <div class="icon">
               <i class="ion ion-calendar"></i>
             </div>
-            <a href="#" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">&nbsp <i></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -83,28 +87,28 @@ include 'header.php';
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
+              <h3><?php echo $totalJadwalBooking; ?></h3>
 
               <p>Jadwal Terbooking</p>
             </div>
             <div class="icon">
               <i class="ion ion-ios-timer"></i>
             </div>	
-            <a href="#" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">&nbsp <i class=""></i></a>
           </div>
         </div>
 		<div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-blue">
             <div class="inner">
-              <h3>65</h3>
+              <h3><?php echo $totalUser; ?></h3>
 
               <p>User Terdaftar</p>
             </div>
             <div class="icon">
               <i class="ion ion-android-people"></i>
             </div>	
-            <a href="#" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">&nbsp <i></i></a>
           </div>
         </div>
         <!-- ./col -->
