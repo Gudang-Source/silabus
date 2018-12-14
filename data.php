@@ -92,7 +92,7 @@ include 'header.php';
                   $data0 = mysql_fetch_array($query0);
                   echo "<tr><td>".$data0['waktu']."</td>";
                   for($y=1;$y<=$jh;$y++){
-                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='F1' AND w.idwaktu='$x' AND h.idhari='$y'");
+                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='F1' AND u.otoritas='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='F1' and j.status='1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK(CURDATE(), 1))");
                     $datanya = mysql_fetch_array($query);
                     echo "<td>".$datanya['keterangan']."</td>";
                   }
@@ -157,7 +157,7 @@ include 'header.php';
                   $data0 = mysql_fetch_array($query0);
                   echo "<tr><td>".$data0['waktu']."</td>";
                   for($y=1;$y<=$jh;$y++){
-                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='F2' AND w.idwaktu='$x' AND h.idhari='$y' and j.status='1'");
+                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='F2' AND u.otoritas='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='F2' and j.status='1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK(CURDATE(), 1))");
                     $datanya = mysql_fetch_array($query);
                     echo "<td>".$datanya['keterangan']."</td>";
                   }
@@ -222,7 +222,7 @@ include 'header.php';
                   $data0 = mysql_fetch_array($query0);
                   echo "<tr><td>".$data0['waktu']."</td>";
                   for($y=1;$y<=$jh;$y++){
-                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='F3' AND w.idwaktu='$x' AND h.idhari='$y'");
+                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='F3' AND u.otoritas='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='F3' and j.status='1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK(CURDATE(), 1))");
                     $datanya = mysql_fetch_array($query);
                     echo "<td>".$datanya['keterangan']."</td>";
                   }
@@ -286,7 +286,7 @@ include 'header.php';
                   $data0 = mysql_fetch_array($query0);
                   echo "<tr><td>".$data0['waktu']."</td>";
                   for($y=1;$y<=$jh;$y++){
-                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='G1' AND w.idwaktu='$x' AND h.idhari='$y'");
+                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='G1' AND u.otoritas='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='G1' and j.status='1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK(CURDATE(), 1))");
                     $datanya = mysql_fetch_array($query);
                     echo "<td>".$datanya['keterangan']."</td>";
                   }
@@ -352,7 +352,7 @@ include 'header.php';
                   $data0 = mysql_fetch_array($query0);
                   echo "<tr><td>".$data0['waktu']."</td>";
                   for($y=1;$y<=$jh;$y++){
-                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='G2' AND w.idwaktu='$x' AND h.idhari='$y'");
+                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='G2' AND u.otoritas='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='G2' and j.status='1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK(CURDATE(), 1))");
                     $datanya = mysql_fetch_array($query);
                     echo "<td>".$datanya['keterangan']."</td>";
                   }
@@ -417,7 +417,7 @@ include 'header.php';
                   $data0 = mysql_fetch_array($query0);
                   echo "<tr><td>".$data0['waktu']."</td>";
                   for($y=1;$y<=$jh;$y++){
-                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='G5' AND w.idwaktu='$x' AND h.idhari='$y'");
+                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='G5' AND u.otoritas='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='G5' and j.status='1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK(CURDATE(), 1))");
                     $datanya = mysql_fetch_array($query);
                     echo "<td>".$datanya['keterangan']."</td>";
                   }
@@ -482,7 +482,7 @@ include 'header.php';
                   $data0 = mysql_fetch_array($query0);
                   echo "<tr><td>".$data0['waktu']."</td>";
                   for($y=1;$y<=$jh;$y++){
-                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND l.lab='L12' AND w.idwaktu='$x' AND h.idhari='$y'");
+                    $query = mysql_query("SELECT j.keterangan FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='L12' AND u.otoritas='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$y' AND w.idwaktu='$x' AND l.lab='L12' and j.status='1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK(CURDATE(), 1))");
                     $datanya = mysql_fetch_array($query);
                     echo "<td>".$datanya['keterangan']."</td>";
                   }

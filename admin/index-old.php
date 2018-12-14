@@ -1,45 +1,30 @@
 <?php
-include 'otoritas2.php';
+include "otoritas1.php";
 include "header.php";
-$iduser = $_SESSION['iduser'];
-
+$totalUser = mysql_num_rows(mysql_query("SELECT * from tbuser WHERE iduser<>'1'"));
 $totalJadwal = mysql_num_rows(mysql_query("SELECT * from tbjadwal WHERE status='1'"));
-$totalJadwalTetap = mysql_num_rows(mysql_query("SELECT * from tbjadwal WHERE status='1' and iduser='1'"));
-$totalBooking = mysql_num_rows(mysql_query("SELECT * from tbjadwal WHERE status='1' and iduser='$iduser'"));
-$totalRiwayat = mysql_num_rows(mysql_query("SELECT * from tbjadwal WHERE (status='1' and iduser='$iduser') OR status='2' and iduser='$iduser'"));
-
+$totalJadwalBooking = mysql_num_rows(mysql_query("SELECT * from tbjadwal WHERE status='1' AND iduser<>'1'"));
+$totalJadwalTetap = mysql_num_rows(mysql_query("SELECT * from tbjadwal WHERE status='1' AND iduser='1'"));
 ?>
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
     <!-- Sidebar user panel -->
-    <div class="user-panel">
-        <div class="pull-left image">
-          <img src="../dist/img/user.png" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p><?php echo $_SESSION['nama']; ?></p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-        </div>
-      </div>
+    
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
-      <li class="header">MAIN MENU</li>
-      <li class="treeview active">
-        <a href="#">
-          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-          <span class="pull-right-container">
-            
-          </span>
-        </a>
-        
-      </li>
+    <li class="treeview active"><a href="#"><i class="fa fa-dashboard"></i>
+      <span>Dashboard</span><span class="pull-right-container"></span></a>
+    </li>
 	  <li><a href="data.php"><i class="fa fa-calendar"></i> <span>Jadwal</span></a></li>
-    <li><a href="cari.php"><i class="fa fa-search-plus"></i> <span>Reservasi</span></a></li>
-    <li><a href="edituser.php?id=<?php echo $_SESSION['iduser']; ?>"><i class="fa fa-sliders"></i> <span>Preferensi</span></a></li>
-    <li ><a href="history.php"><i class="fa fa-history"></i> <span>Riwayat</span></a>
-
+    <li><a href="cari.php"><i class="fa fa-search"></i> <span>Pencarian</span></a>
+    <li><a href="reservasi.php"><i class="fa fa-search-plus"></i> <span>Reservasi</span></a>
+    </li>
+    <li><a href="userman.php"><i class="fa fa-users"></i> <span>Userman</span></a>
+    </li>
+    <li ><a href="jedit.php"><i class="fa fa-folder-open-o"></i> <span>jEdit</span></a>
+    <li ><a href="logs.php"><i class="fa fa-book"></i> <span>Logs</span></a>
     </ul>  
   </section>
   <!-- /.sidebar -->
@@ -72,7 +57,7 @@ $totalRiwayat = mysql_num_rows(mysql_query("SELECT * from tbjadwal WHERE (status
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3><?php echo $totalJadwal; ?><sup style="font-size: 20px"></sup></h3>
+              <h3><?php echo $totalJadwal ; ?><sup style="font-size: 20px"></sup></h3>
 
               <p>Total Jadwal</p>
             </div>
@@ -87,14 +72,14 @@ $totalRiwayat = mysql_num_rows(mysql_query("SELECT * from tbjadwal WHERE (status
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3><?php echo $totalJadwalTetap; ?></h3>
+              <h3><?php echo $totalJadwalTetap ; ?></h3>
 
               <p>Jadwal Tetap</p>
             </div>
             <div class="icon">
               <i class="ion ion-calendar"></i>
             </div>
-            <a href="#" class="small-box-footer">&nbsp <i class=""></i></a>
+            <a href="jedit.php" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -102,38 +87,59 @@ $totalRiwayat = mysql_num_rows(mysql_query("SELECT * from tbjadwal WHERE (status
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3><?php echo $totalBooking; ?></h3>
+              <h3><?php echo $totalJadwalBooking ; ?></h3>
 
-              <p>Reservasi Aktif</p>
+              <p>Jadwal Terbooking</p>
             </div>
             <div class="icon">
               <i class="ion ion-ios-timer"></i>
             </div>	
-            <a href="history.php" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="jedit.php" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-		<div class="col-lg-3 col-xs-6">
+		    <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-blue">
+          <div class="small-box bg-aqua">
             <div class="inner">
-              <h3><?php echo $totalRiwayat; ?></h3>
+              <h3><?php echo $totalUser ; ?></h3>
 
-              <p>Riwayat Reservasi</p>
+              <p>User Terdaftar</p>
             </div>
             <div class="icon">
-              <i class="fa fa-history"></i>
+              <i class="ion ion-android-people"></i>
             </div>	
-            <a href="history.php" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="userman.php" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
+
       </div>
+      
   </section>
+
               </div>
               <!-- /.tab-pane -->
             </div>
             <!-- /.tab-content -->
           </div>
+          <!-- BAR CHART -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Statistik Penggunaan Gedung</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="container">
+              <div class="chart">
+                <canvas id="myChart" style="height:230px"></canvas>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
           <!-- nav-tabs-custom -->
 
   <!-- /.tab-pane -->
@@ -160,6 +166,8 @@ $totalRiwayat = mysql_num_rows(mysql_query("SELECT * from tbjadwal WHERE (status
  </div>
  <!-- ./wrapper -->
 
+
+ <script src="../../bower_components/chart.js/Chart.js"></script>
  <!-- jQuery 3 -->
  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
  <!-- Bootstrap 3.3.7 -->
@@ -176,7 +184,29 @@ $totalRiwayat = mysql_num_rows(mysql_query("SELECT * from tbjadwal WHERE (status
  <!-- AdminLTE for demo purposes -->
  <script src="../dist/js/demo.js"></script>
  <!-- page script -->
- <script>
+<script>
+  let myChart = document.getElementId('myChart').getContext('2d');
+
+  let labChart = new Chart(myChart, {
+    type: 'bar',
+    data:{
+      labels:['F1', 'F2', 'F3', 'G1', 'G2'. 'G5', 'L12'],
+      datasets:[{
+        labels:'Penggunaan',
+        data:[
+          123,
+          433,
+          455,
+          234,
+          111,
+          543,
+          451
+        ]
+      }]
+    },
+  });
+</script>
+<script>
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable({
@@ -189,5 +219,7 @@ $totalRiwayat = mysql_num_rows(mysql_query("SELECT * from tbjadwal WHERE (status
     })
   })
 </script>
+
+
 </body>
 </html>

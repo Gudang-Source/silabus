@@ -25,7 +25,7 @@ if($idwaktu>$idwaktu2){
 
       //$query0 = mysql_query("SELECT j.* FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$xidwaktu' AND l.lab='$lab') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$xidwaktu' AND l.lab='$lab' AND j.tanggal='$xtgl')");
 
-      $query0 = mysql_query("SELECT j.* FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$xidwaktu' AND l.lab='$lab' AND j.iduser='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$xidwaktu' AND l.lab='$lab' AND YEARWEEK(j.tanggal, 1)=YEARWEEK('$xtgl', 1))");
+      $query0 = mysql_query("SELECT j.* FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$xidwaktu' AND l.lab='$lab' AND u.otoritas='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$xidwaktu' AND l.lab='$lab' AND YEARWEEK(j.tanggal, 1)=YEARWEEK('$xtgl', 1))");
 
       $checker[$i] = mysql_num_rows($query0);
 
@@ -41,7 +41,7 @@ if($idwaktu>$idwaktu2){
 
        // $query1 = mysql_query("SELECT j.* FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$yidwaktu' AND l.lab='$lab') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$yidwaktu' AND l.lab='$lab' AND j.tanggal='$xtgl')");
 
-        $query1 = mysql_query("SELECT j.* FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$yidwaktu' AND l.lab='$lab' AND j.iduser='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$yidwaktu' AND l.lab='$lab' AND YEARWEEK(j.tanggal, 1)=YEARWEEK('$xtgl', 1))");
+        $query1 = mysql_query("SELECT j.* FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$yidwaktu' AND l.lab='$lab' AND u.otoritas='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$yidwaktu' AND l.lab='$lab' AND YEARWEEK(j.tanggal, 1)=YEARWEEK('$xtgl', 1))");
 
 
         mysql_query("INSERT into silabus.tbjadwal (idlab,idwaktu,idhari,iduser,tanggal,keterangan,status) values ('$idlab','$yidwaktu','$idhari','$iduser','$xtgl', '$keterangan','1')");

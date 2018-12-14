@@ -9,7 +9,15 @@ include "header.php";
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
     <!-- Sidebar user panel -->
-
+    <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../dist/img/admin-unp.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p><?php echo $_SESSION['nama']; ?></p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li>
@@ -27,8 +35,8 @@ include "header.php";
     </li>
     <li class="treeview active"><a href="userman.php"><i class="fa fa-users"></i> <span>Userman</span></a>
     </li>
-    <li ><a href="labman.php"><i class="fa fa-folder-open-o"></i> <span>jEdit</span></a>
-    <li ><a href="history.php"><i class="fa fa-book"></i> <span>Logs</span></a>
+    <li ><a href="jedit.php"><i class="fa fa-folder-open-o"></i> <span>jEdit</span></a>
+    <li ><a href="logs.php"><i class="fa fa-book"></i> <span>Logs</span></a>
     </ul>
   </section>
   <!-- /.sidebar -->

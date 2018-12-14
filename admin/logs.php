@@ -1,5 +1,5 @@
 <?php
-include "otoritas2.php";
+include "otoritas1.php";
 include "header.php";
 ?>
 <!-- =============================================== -->
@@ -11,7 +11,7 @@ include "header.php";
     <!-- Sidebar user panel -->
     <div class="user-panel">
         <div class="pull-left image">
-          <img src="../dist/img/user.png" class="img-circle" alt="User Image">
+          <img src="../dist/img/admin-unp.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo $_SESSION['nama']; ?></p>
@@ -20,21 +20,23 @@ include "header.php";
       </div>
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
-      <li class="header">MAIN MENU</li>
-      <li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
-      </li>
       <li>
-        <a href="data.php">
-          <i class="fa fa-calendar"></i> <span>Jadwal</span>
+        <a href="index.php">
+          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           <span class="pull-right-container">
+            
           </span>
         </a>
+        
       </li>
-          <li><a href="cari.php"><i class="fa fa-search-plus"></i> <span>Reservasi</span></a>
+    <li><a href="data.php"><i class="fa fa-calendar"></i> <span>Jadwal</span></a></li>
+    <li><a href="cari.php"><i class="fa fa-search"></i> <span>Pencarian</span></a>
+    <li><a href="reservasi.php"><i class="fa fa-search-plus"></i> <span>Reservasi</span></a>
     </li>
-      <li><a href="edituser.php?id=<?php echo $_SESSION['iduser']; ?>"><i class="fa fa-sliders"></i> <span>Preferensi</span></a></li>
-      <li class="treeview active"><a href="history.php"><i class="fa fa-history"></i> <span>Riwayat</span></a>
-      </li>
+    <li><a href="userman.php"><i class="fa fa-users"></i> <span>Userman</span></a>
+    </li>
+    <li><a href="jedit.php"><i class="fa fa-folder-open-o"></i> <span>jEdit</span></a>
+    <li class="treeview active"><a href="logs.php"><i class="fa fa-book"></i> <span>Logs</span></a>
     </ul>
   </section>
   <!-- /.sidebar -->
@@ -50,8 +52,8 @@ include "header.php";
       Riwayat Reservasi
     </h1>
     <ol class="breadcrumb">
-      <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Riwayat</li>
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Logs</li>
     </ol>
 
   </section>
@@ -63,13 +65,14 @@ include "header.php";
     <div class="box">
       <div class="box-body">
 
-        <button type="button" class="fa fa-search-plus btn btn-primary" data-toggle="modal" data-target="#modal-default" style="height: 35px;" onclick="window.location.href='cari.php'"> Tambah</button>
         <div id=contentdinamis>
 
         </div>
         <!-- /.content -->
       </div>
-      <!-- /.box-body -->\
+      <!-- /.box-body -->
+
+      <!-- /.box-footer-->
     </div>
     <!-- /.box -->
 
@@ -113,61 +116,14 @@ include "header.php";
     $(document).ready(function() {
       $('.sidebar-menu').tree();
       loadData();
-      $('#manage-user').on('submit', function(e){
-        e.preventDefault();
-        if ($('#input-username').val()==""){
-          alert("Data tidak valid!");
-        }
-        else if ($('#input-newpassword').val()==""){
-          alert("Data tidak valid");
-        }
-        else if (($('#input-retypepassword').val()=="")||($('#input-retypepassword').val()!=$('#input-newpassword').val())){
-          alert("Data tidak valid!");
-        }
-        else if ($('#input-nama').val()==""){
-          alert("Data tidak valid");
-        }
-        else if ($('#input-ni').val()==""){
-          alert("Data tidak valid");
-        }
-        else if ($('#input-otoritas').val()==""){
-          alert("Data tidak valid");
-        }
-
-        else {
-          $.ajax({
-            url:$(this).attr('action'),
-            method:$(this).attr('method'),
-            data:$(this).serialize(),
-            success:function(){
-              $('form').attr('action',"adduser.php");
-              loadData();
-              resetForm();
-              $('#modal-default').modal('hide');
-            }
-          })
-        }
-      })
     })
     function loadData(){
       $('#modal-default').on('hidden.bs.modal', function(){
         $(this).find('form')[0].reset();
       })
-      $.get('gethistory.php', function(data){
+      $.get('getlogs.php', function(data){
         $('#contentdinamis').html(data);
 
-        $('.updateButton').click(function(e){
-          e.preventDefault();
-            $('[name=username]').val($(this).attr('updateusername'));
-            $('[name=nama]').val($(this).attr('updatenama'));
-            $('[name=ni]').val($(this).attr('updateni'));
-            $('[name=otoritas]').val($(this).attr('updateotoritas'));
-            $('[name=password]').val($(this).attr('updatepass'));
-            $('[name=password2]').val($(this).attr('updatepass'));
-            $('form').attr('action',$(this).attr('updateid'));
-
-
-        })
       })
     }
     function resetForm(){

@@ -11,7 +11,18 @@
 ?>
   <aside class="main-sidebar">
     <section class="sidebar">
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../dist/img/user.png" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p><?php echo $_SESSION['nama']; ?></p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
 		<ul class="sidebar-menu" data-widget="tree">
+      <li class="header">MAIN MENU</li>
+      
 		  <li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>  </li>
 		  <li><a href="data.php">
 			  <i class="fa fa-calendar"></i> <span>Jadwal</span>
@@ -74,6 +85,7 @@
         mysql_query("UPDATE tbuser SET password='$passwordbaru' WHERE iduser='$id'");
         mysql_query("UPDATE tbuser SET     nama='$namabaru'     WHERE iduser='$id'");
         echo "<script language='javascript'>alert('Data berhasil di ubah.'); document.location='edituser.php';</script>";
+        $_SESSION['nama'] = $namabaru;
       } else {
 				echo "<script language='javascript'>alert('Data gagal di ubah!'); document.location='edituser.php';</script>";
 			}		
