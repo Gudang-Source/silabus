@@ -55,7 +55,7 @@ if (mysql_num_rows($qry) > 0) {
                   <td style="text-align: center;">
                     <button type="button" updateusername="'.$tbuser["username"].'" updatelab="'.$tblab["lab"].'" updatewaktu="'.$tbwaktu["waktu"].'" updatehari="'.$tbhari["hari"].'" updateketerangan="'.$data["keterangan"].'" updatestatus="'.$status.'" updatetanggal="'.$tanggal.'" updateid="updatejadwal.php?iduser='.$data["iduser"].'&idlab='.$data["idlab"].'&idwaktu='.$data["idwaktu"].'&idhari='.$data["idhari"].'&status='.$data["status"].'&keterangan='.$data["keterangan"].'&tanggal='.$tanggal.'" class="fa fa-edit btn btn-warning updateButton" data-toggle="modal" data-target="#modal-default" style="height: 30px;" > Ubah</button>
                     <span></span>
-                    <button type="button" class="fa fa-user-times btn btn-danger deleteButton" style="height: 30px;" onclick="window.location.href=`deljadwal.php?iduser='.$iduser.'&idlab='.$idlab.'&idwaktu='.$idwaktu.'&idhari='.$idhari.'&keterangan='.$data["keterangan"].'&status='.$data["status"].'&tanggal='.$tanggal.'`"> Disable</button>
+                    <button type="button" class="fa fa-power-off btn btn-danger deleteButton" style="height: 30px;" onclick="window.location.href=`deljadwal.php?iduser='.$iduser.'&idlab='.$idlab.'&idwaktu='.$idwaktu.'&idhari='.$idhari.'&keterangan='.$data["keterangan"].'&status='.$data["status"].'&tanggal='.$tanggal.'`"> Disable</button>
                   </td>
 
 

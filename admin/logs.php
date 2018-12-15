@@ -31,7 +31,7 @@ include "header.php";
         
       </li>
     <li><a href="data.php"><i class="fa fa-calendar"></i> <span>Jadwal</span></a></li>
-    <li><a href="cari.php"><i class="fa fa-search"></i> <span>Pencarian</span></a>
+    <!--<li><a href="cari.php"><i class="fa fa-search"></i> <span>Pencarian</span></a>-->
     <li><a href="reservasi.php"><i class="fa fa-search-plus"></i> <span>Reservasi</span></a>
     </li>
     <li><a href="userman.php"><i class="fa fa-users"></i> <span>Userman</span></a>

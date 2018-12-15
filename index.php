@@ -49,7 +49,7 @@ for($a = 1; $a <= $totalLab; $a++){
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="plugins/iCheck/all.css">
   <link rel="stylesheet" href="bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
-  <link rel="icon" href="../dist/img/favicon.png" type="image/gif" sizes="16x16">
+  <link rel="icon" href="dist/img/favicon.png" type="image/gif" sizes="16x16">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -157,7 +157,7 @@ for($a = 1; $a <= $totalLab; $a++){
             <div class="icon">
               <i class="ion ion-calendar"></i>
             </div>
-            <a href="jedit.php" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="login.html" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -172,7 +172,7 @@ for($a = 1; $a <= $totalLab; $a++){
             <div class="icon">
               <i class="ion ion-ios-timer"></i>
             </div>  
-            <a href="jedit.php" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="login.html" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">
@@ -186,7 +186,7 @@ for($a = 1; $a <= $totalLab; $a++){
             <div class="icon">
               <i class="ion ion-android-people"></i>
             </div>  
-            <a href="userman.php" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="login.html" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -327,6 +327,7 @@ for($a = 1; $a <= $totalLab; $a++){
     barChartOptions.datasetFill = false
     barChart.Bar(barChartData, barChartOptions)
   })
+
 </script>
 </body>
 </html>

@@ -1,3 +1,5 @@
+<body>
+<script src="dist/sweetalert2.all.min.js"></script>
 <?php
 include ("config.php");
 
@@ -18,32 +20,62 @@ $niuser = $datauser['ni'];
 $nimin = $datamin['ni'];
 if($useruser==$username || $username==$usermin){
 	?>
+	
 	<script language="javascript">
-		alert('Username sudah digunakan user lain!');
-		document.location.href="register.html";
+		setTimeout(function() {
+			swal({
+				title: "Registrasi Gagal",
+				text: "Username sudah digunakan user lain!",
+				type: "error"
+			}).then(function() {
+				window.location = "register.html";
+			});
+		});
 	</script>
 	<?php
 } else if($nimin==$ni || $niuser==$ni){
 	?>
 	<script language="javascript">
-		alert('Anda sudah memiliki akun! Silahkan login.');
-		document.location.href="login.html";
+		setTimeout(function() {
+			swal({
+				title: "Registrasi Gagal",
+				text: "Anda sudah memiliki akun! Silahkan login.",
+				type: "error"
+			}).then(function() {
+				window.location = "login.html";
+			});
 	</script>
 	<?php
 } else if($password!=$password2){
 	?>
+	
 	<script language="javascript">
-		alert('Periksa kembali password anda!');
-		document.location.href="register.html";
+		setTimeout(function() {
+			swal({
+				title: "Registrasi Gagal",
+				text: "Periksa kembali password anda!",
+				type: "error"
+			}).then(function() {
+				window.location = "register.html";
+			});
+		});
 	</script>
 	<?php
 } else{
 	$xpassword = str_rot13($password);
 	mysql_query("INSERT into tbuser set username='$username', password='$xpassword', ni='$ni', nama='$nama', otoritas='2'");
 	?>
+	
 	<script language="javascript">
-		alert('Anda berhasil mendaftar, silahkan login!');
-		document.location.href="login.html";
+		setTimeout(function() {
+			swal({
+				title: "Registrasi Berhasil",
+				text: "Anda berhasil mendaftar, silahkan login!",
+				type: "success"
+			}).then(function() {
+				window.location = "login.html";
+			});
+		});
 	</script>
 	<?php
 }

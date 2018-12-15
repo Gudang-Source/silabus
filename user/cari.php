@@ -170,6 +170,7 @@ $id = $_SESSION['iduser'];
 </div>
 <!-- ./wrapper -->
 
+<script src="../dist/sweetalert2.all.min.js"></script>
 <!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->

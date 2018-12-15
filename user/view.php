@@ -30,6 +30,9 @@ if($idwaktu>$idwaktu2){
       $checker[$i] = mysql_num_rows($query0);
 
       if(in_array("1", $checker)){
+        ?>
+        <script language="javascript">Swal('Gagal', 'Mohon maaf Lab sudah terpesan!', 'warning');</script>
+        <?php
         echo "<h1><b>Mohon maaf Lab sudah terpesan!</b></h1>";
         break;
       }
@@ -46,13 +49,20 @@ if($idwaktu>$idwaktu2){
 
         mysql_query("INSERT into silabus.tbjadwal (idlab,idwaktu,idhari,iduser,tanggal,keterangan,status) values ('$idlab','$yidwaktu','$idhari','$iduser','$xtgl', '$keterangan','1')");
       }
+      ?>
+      <script language="javascript">Swal('Sukses', 'Reservasi berhasil', 'success');</script>
+      <?php
       echo "<h1><b>Gedung Lab ".$lab." berhasil dipesan!</b></h1>";
+      
     }
 
   }
 
   else {
-    echo "Parameter salah! Mohon periksa kembali tanggal dan keterangan.";
+    //echo "Parameter salah! Mohon periksa kembali tanggal dan keterangan.";
+    ?>
+      <script language="javascript">Swal('Error', 'Harap periksa parameter pencarian!', 'error');</script>
+    <?php
   }
 }
 ?>

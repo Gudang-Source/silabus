@@ -84,18 +84,47 @@
       if($password==$data['password']){
         mysql_query("UPDATE tbuser SET password='$passwordbaru' WHERE iduser='$id'");
         mysql_query("UPDATE tbuser SET     nama='$namabaru'     WHERE iduser='$id'");
-        echo "<script language='javascript'>alert('Data berhasil di ubah.'); document.location='edituser.php';</script>";
+        //echo "<script language='javascript'>alert('Data berhasil di ubah.'); document.location='edituser.php';</script>";
+        ?>
+
+        <script language="javascript">
+          setTimeout(function() {
+            swal({
+              title: "Berhasil Menyimpan",
+              text: "Data berhasil di diperbarui.",
+              type: "success"
+            }).then(function() {
+              window.location = "edituser.php";
+            });
+          });
+        </script>
+        <?php
         $_SESSION['nama'] = $namabaru;
       } else {
-				echo "<script language='javascript'>alert('Data gagal di ubah!'); document.location='edituser.php';</script>";
+				//echo "<script language='javascript'>alert('Data gagal di ubah!'); document.location='edituser.php';</script>";
+        ?>
+
+        <script language="javascript">
+          setTimeout(function() {
+            swal({
+              title: "Gagal Menyimpan",
+              text: "Data gagal di ubah!",
+              type: "error"
+            }).then(function() {
+              window.location = "edituser.php";
+            });
+          });
+        </script>
+        <?php
 			}		
 		}
 	?>
 
 </div>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="plugins/iCheck/icheck.min.js"></script>
+<script src="../dist/sweetalert2.all.min.js"></script>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../plugins/iCheck/icheck.min.js"></script>
 
       <div class="modal fade" id="modal-default">
           <div class="modal-dialog" style="width: 1150px">
@@ -113,41 +142,34 @@
         </div>
     </section>
   </div>
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
-  </footer>
   <div class="control-sidebar-bg"></div>
 </div>
-
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="../dist/sweetalert2.all.min.js"></script>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="../plugins/input-mask/jquery.inputmask.js"></script>
+<script src="../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="../plugins/input-mask/jquery.inputmask.extensions.js"></script>
 <!-- date-range-picker -->
-<script src="bower_components/moment/min/moment.min.js"></script>
-<script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="../bower_components/moment/min/moment.min.js"></script>
+<script src="../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap datepicker -->
-<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- bootstrap color picker -->
-<script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<script src="../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
-<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- SlimScroll -->
-<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- iCheck 1.0.1 -->
-<script src="plugins/iCheck/icheck.min.js"></script>
+<script src="../plugins/iCheck/icheck.min.js"></script>
 <!-- FastClick -->
-<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<script src="../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="../dist/js/demo.js"></script>
 <!-- Page script -->
 
 </body>

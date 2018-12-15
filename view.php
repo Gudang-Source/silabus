@@ -8,12 +8,18 @@ $idhari = date('N', strtotime($xtgl));
 if(!empty($tanggal)){
   //$query0 = mysql_query("SELECT j.* FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$idwaktu' AND l.lab='$lab') OR j.tanggal='$xtgl'");
 
-  $query0 = mysql_query("SELECT j.* FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$idwaktu' AND l.lab='$lab' AND j.iduser='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$idwaktu' AND l.lab='$lab' AND j.status='1' AND j.iduser<>'1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK('$xtgl', 1))");
+  //$query0 = mysql_query("SELECT j.* FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$idwaktu' AND l.lab='$lab' AND j.iduser='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND w.idwaktu='$idwaktu' AND l.lab='$lab' AND j.status='1' AND j.iduser<>'1' AND YEARWEEK(j.tanggal, 1)=YEARWEEK('$xtgl', 1))");
 
+
+  $query0 = mysql_query("SELECT j.* FROM tbjadwal j, tbhari h, tblab l, tbuser u, tbwaktu w WHERE (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND j.idwaktu='$idwaktu' AND l.lab='$lab' AND u.otoritas='1' AND j.status='1') OR (j.idlab=l.idlab AND j.idwaktu=w.idwaktu AND j.idhari=h.idhari AND j.iduser=u.iduser AND j.idhari='$idhari' AND j.idwaktu='$idwaktu' AND l.lab='$lab' AND j.status='1' AND u.otoritas<>'1' AND j.tanggal='$xtgl')");
 
 
   if(mysql_num_rows($query0)==0){
-    echo "<h1><center><b>Jadwal tidak ditemukan</b></center></h1>";
+    //echo "<h1><center><b>Jadwal tidak ditemukan</b></center></h1>";
+    ?>
+
+    <script language="javascript">Swal('Error', 'Jadwal tidak ditemukan', 'error');</script>
+    <?php
   } else {
       $untukhari = mysql_fetch_array($query0);
       $idharinya = $untukhari['idhari'];
@@ -68,5 +74,9 @@ if(!empty($tanggal)){
     <?php
   }
 } else {
-  echo "<h1><center><b></b>Harap periksa parameter pencarian!</b></center></h1>";
+  //echo "<h1><center><b></b>Harap periksa parameter pencarian!</b></center></h1>";
+  ?>
+  
+  <script language="javascript">Swal('Error', 'Harap periksa parameter pencarian!', 'error');</script>
+  <?php
 }

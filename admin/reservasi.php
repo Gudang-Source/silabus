@@ -30,7 +30,7 @@ $id = $_SESSION['iduser'];
         
       </li>
     <li><a href="data.php"><i class="fa fa-calendar"></i> <span>Jadwal</span></a></li>
-    <li><a href="cari.php"><i class="fa fa-search"></i> <span>Pencarian</span></a>
+    <!--<li><a href="cari.php"><i class="fa fa-search"></i> <span>Pencarian</span></a>-->
     <li class="treeview active"><a href="reservasi.php"><i class="fa fa-search-plus"></i> <span>Reservasi</span></a>
     </li>
     <li><a href="userman.php"><i class="fa fa-users"></i> <span>Userman</span></a>
@@ -180,6 +180,7 @@ $id = $_SESSION['iduser'];
 </div>
 <!-- ./wrapper -->
 
+<script src="../dist/sweetalert2.all.min.js"></script>
 <!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->

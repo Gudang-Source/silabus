@@ -1,14 +1,25 @@
+<body>
+<script src="dist/sweetalert2.all.min.js"></script>
 <?php
 include"config.php";
 $username = $_POST['username'];
 $password = str_rot13($_POST['password']);
-if($username==''){
+if(!isset($password)||!isset($username)){
+	
 	?>
 	<script language="javascript">
-		alert('Username atau Password salah!');
-		document.location.href="login.html";
+		setTimeout(function() {
+			swal({
+				title: "Login Gagal!",
+				text: "Username atau Password salah!",
+				type: "error"
+			}).then(function() {
+				window.location = "login.html";
+			});
+		});
 	</script>
 	<?php
+
 } else {
 	$ceklogin = mysql_query("SELECT * from tbuser where username='$username' and password='$password'");
 
@@ -25,7 +36,22 @@ if($username==''){
 		$_SESSION['username'] = $namapengguna;
 		$_SESSION['nama'] = $nama;
 		$_SESSION['otoritas'] = $otoritas;
-		header("location:admin/");
+		//header("location:admin/");
+		?>
+		
+		<script language="javascript">
+			setTimeout(function() {
+				swal({
+					title: "Login Sukses!",
+					text: "Selamat datang <?php echo $_SESSION['nama']; ?>",
+					type: "success"
+				}).then(function() {
+					window.location = "admin/";
+				});
+			});
+		</script>
+		<?php
+
 	}
 	else if ($otoritas== 2){
 		session_start();
@@ -34,16 +60,38 @@ if($username==''){
 		$_SESSION['nama'] = $nama;
 		$_SESSION['ni'] = $ni;
 		$_SESSION['otoritas'] = $otoritas;
-		header("location:user/");	
+		//header("location:user/");
+		?>
+		
+		<script language="javascript">
+			setTimeout(function() {
+				swal({
+					title: "Login Sukses!",
+					text: "Selamat datang <?php echo $_SESSION['nama']; ?>",
+					type: "success"
+				}).then(function() {
+					window.location = "user/";
+				});
+			});
+		</script>
+		<?php	
 	}
 	else {
-		session_destroy();
 		?>
+		
 		<script language="javascript">
-			alert('Username atau Password salah!');
-			document.location.href="login.html";
+			setTimeout(function() {
+				swal({
+					title: "Login Gagal!",
+					text: "Username atau Password salah!",
+					type: "error"
+				}).then(function() {
+					window.location = "login.html";
+				});
+			});
 		</script>
 		<?php
 	}
 }
 ?>
+</body>
