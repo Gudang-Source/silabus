@@ -4,6 +4,8 @@
 include"config.php";
 $username = $_POST['username'];
 $password = str_rot13($_POST['password']);
+$captcha = $_POST['g-recaptcha-response'];
+$secret_key = '6LejDYIUAAAAAAKliQWOIWE2jtPGlVpdYGKFDtKN';
 if(!isset($password)||!isset($username)){
 	
 	?>
@@ -20,9 +22,26 @@ if(!isset($password)||!isset($username)){
 	</script>
 	<?php
 
+} else if(!isset($captcha)){
+	?>
+	<script language="javascript">
+		setTimeout(function() {
+			swal({
+				title: "Login Gagal!",
+				text: "Periksa kembali captcha!",
+				type: "error"
+			}).then(function() {
+				window.location = "login.html";
+			});
+		});
+	</script>
+	<?php
 } else {
 	$ceklogin = mysql_query("SELECT * from tbuser where username='$username' and password='$password'");
 
+	$url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secret_key) . '&response=' . $captcha;
+	$recaptcha = file_get_contents($url);
+	$recaptcha = json_decode($recaptcha, true);
 	$data = mysql_fetch_array($ceklogin);
 	$namapengguna = $data['username'];
 	$nama = $data['nama'];
@@ -30,7 +49,7 @@ if(!isset($password)||!isset($username)){
 	$ni = $data['ni'];
 	$iduser = $data['iduser'];
 
-	if ($otoritas == 1){
+	if ($otoritas == 1 && $recaptcha['success']){
 		session_start();
 		$_SESSION['iduser'] = $iduser;
 		$_SESSION['username'] = $namapengguna;
@@ -53,7 +72,7 @@ if(!isset($password)||!isset($username)){
 		<?php
 
 	}
-	else if ($otoritas== 2){
+	else if ($otoritas== 2 && $recaptcha['success']){
 		session_start();
 		$_SESSION['iduser'] = $iduser;
 		$_SESSION['username'] = $namapengguna;

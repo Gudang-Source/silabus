@@ -18,7 +18,24 @@ $useruser = $datauser['username'];
 $usermin = $datamin['username'];
 $niuser = $datauser['ni'];
 $nimin = $datamin['ni'];
-if($useruser==$username || $username==$usermin){
+$captcha = $_POST['g-recaptcha-response'];
+$secret_key = '6LejDYIUAAAAAAKliQWOIWE2jtPGlVpdYGKFDtKN';
+
+if(!isset($captcha)){
+	?>
+	<script language="javascript">
+		setTimeout(function() {
+			swal({
+				title: "Registrasi Gagal",
+				text: "Isi captcha dengan benar!",
+				type: "error"
+			}).then(function() {
+				window.location = "register.html";
+			});
+		});
+	</script>
+	<?php
+} else if($useruser==$username || $username==$usermin){
 	?>
 	
 	<script language="javascript">
@@ -44,6 +61,7 @@ if($useruser==$username || $username==$usermin){
 			}).then(function() {
 				window.location = "login.html";
 			});
+		});
 	</script>
 	<?php
 } else if($password!=$password2){
@@ -62,21 +80,40 @@ if($useruser==$username || $username==$usermin){
 	</script>
 	<?php
 } else{
-	$xpassword = str_rot13($password);
-	mysql_query("INSERT into tbuser set username='$username', password='$xpassword', ni='$ni', nama='$nama', otoritas='2'");
-	?>
-	
-	<script language="javascript">
-		setTimeout(function() {
-			swal({
-				title: "Registrasi Berhasil",
-				text: "Anda berhasil mendaftar, silahkan login!",
-				type: "success"
-			}).then(function() {
-				window.location = "login.html";
+	$url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secret_key) . '&response=' . $captcha;   
+	$recaptcha = file_get_contents($url);
+	$recaptcha = json_decode($recaptcha, true);
+
+	if(!$recaptcha['success']){
+		?>
+		<script language="javascript">
+			setTimeout(function() {
+				swal({
+					title: "Registrasi Gagal",
+					text: "Isi captcha dengan benar!",
+					type: "error"
+				}).then(function() {
+					window.location = "register.html";
+				});
 			});
-		});
-	</script>
-	<?php
+		</script>
+		<?php
+	} else {
+		$xpassword = str_rot13($password);
+		mysql_query("INSERT into tbuser set username='$username', password='$xpassword', ni='$ni', nama='$nama', otoritas='2'");
+		?>
+		<script language="javascript">
+			setTimeout(function() {
+				swal({
+					title: "Registrasi Berhasil",
+					text: "Anda berhasil mendaftar, silahkan login!",
+					type: "success"
+				}).then(function() {
+					window.location = "login.html";
+				});
+			});
+		</script>
+		<?php
+	}
 }
 ?>
