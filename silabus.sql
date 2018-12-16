@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 11, 2018 at 06:39 PM
--- Server version: 5.7.24-0ubuntu0.16.04.1
+-- Generation Time: 14 Des 2018 pada 22.42
+-- Versi Server: 5.7.24-0ubuntu0.16.04.1
 -- PHP Version: 5.6.38-3+ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbhari`
+-- Struktur dari tabel `tbhari`
 --
 
 CREATE TABLE `tbhari` (
@@ -32,7 +32,7 @@ CREATE TABLE `tbhari` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbhari`
+-- Dumping data untuk tabel `tbhari`
 --
 
 INSERT INTO `tbhari` (`idhari`, `hari`) VALUES
@@ -40,13 +40,12 @@ INSERT INTO `tbhari` (`idhari`, `hari`) VALUES
 (2, 'SELASA'),
 (3, 'RABU'),
 (4, 'KAMIS'),
-(5, 'JUMAT'),
-(6, 'SABTU');
+(5, 'JUMAT');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbjadwal`
+-- Struktur dari tabel `tbjadwal`
 --
 
 CREATE TABLE `tbjadwal` (
@@ -54,25 +53,31 @@ CREATE TABLE `tbjadwal` (
   `idwaktu` int(11) NOT NULL,
   `idhari` int(11) NOT NULL,
   `iduser` int(11) NOT NULL,
-  `tanggal` varchar(30) DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
   `keterangan` varchar(45) DEFAULT NULL,
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbjadwal`
+-- Dumping data untuk tabel `tbjadwal`
 --
 
 INSERT INTO `tbjadwal` (`idlab`, `idwaktu`, `idhari`, `iduser`, `tanggal`, `keterangan`, `status`) VALUES
+(1, 1, 1, 3, '2018-12-17', '4A-JARKOM-ANWAR', 1),
+(1, 2, 1, 3, '2018-12-17', '4A-JARKOM-ANWAR', 1),
+(1, 3, 1, 3, '2018-12-17', '4A-JARKOM-ANWAR', 1),
+(1, 3, 2, 18, '2018-12-18', '3A-KRIPTOGRAFI-Anwarpro', 2),
+(2, 1, 4, 2, '2018-12-13', '4A-Anwar-Kripto', 2),
+(2, 2, 4, 2, '2018-12-13', '4A-Anwar-Kripto', 2),
 (2, 3, 2, 1, NULL, 'FaPet-Nalsa', 1),
-(2, 3, 5, 1, NULL, 'PGSD - 2B - JATMIKO', 1),
+(2, 3, 5, 1, NULL, 'PGSD - 2B - Jatmiko', 1),
 (2, 4, 2, 1, NULL, 'FaPet-Nalsa', 1),
 (2, 4, 5, 1, NULL, 'PGSD - 2B - JATMIKO', 1),
 (2, 5, 1, 1, NULL, 'TM-2A-HESTY', 1),
 (2, 5, 3, 1, NULL, 'TI-PATMI', 1),
 (2, 5, 4, 1, NULL, 'FKES', 1),
 (2, 5, 5, 1, NULL, 'PGSD - 2B - JATMIKO', 1),
-(2, 6, 1, 1, NULL, 'TM-2A-HESTY', 1),
+(2, 6, 1, 1, NULL, 'TM-2A-Hesty', 1),
 (2, 6, 3, 1, NULL, 'TI-PATMI', 1),
 (2, 6, 4, 1, NULL, 'FKES', 1),
 (2, 6, 5, 1, NULL, 'PGSD - 2B - JATMIKO', 1),
@@ -182,7 +187,7 @@ INSERT INTO `tbjadwal` (`idlab`, `idwaktu`, `idhari`, `iduser`, `tanggal`, `kete
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblab`
+-- Struktur dari tabel `tblab`
 --
 
 CREATE TABLE `tblab` (
@@ -191,7 +196,7 @@ CREATE TABLE `tblab` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tblab`
+-- Dumping data untuk tabel `tblab`
 --
 
 INSERT INTO `tblab` (`idlab`, `lab`) VALUES
@@ -206,7 +211,7 @@ INSERT INTO `tblab` (`idlab`, `lab`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbuser`
+-- Struktur dari tabel `tbuser`
 --
 
 CREATE TABLE `tbuser` (
@@ -219,16 +224,31 @@ CREATE TABLE `tbuser` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbuser`
+-- Dumping data untuk tabel `tbuser`
 --
 
 INSERT INTO `tbuser` (`iduser`, `username`, `password`, `ni`, `nama`, `otoritas`) VALUES
-(1, 'admin', 'admin', '1', 'Administrator', 1);
+(1, 'admin', 'nqzva', '1', 'Administrator', 1),
+(2, 'hax0r', 'e4u4514', '31337', 'hax0r', 1),
+(3, 'trianwar', 'gevnajne', '16103020018', 'Anwar Pro', 2),
+(4, 'pwn', 'rot13(md5(pwn))', '2343242323423', 'pwn', 2),
+(5, 'sans', 'cDJTaHBqPT0=', '2332423423', 'sans', 2),
+(6, 'kamu', 'xnzh', '23423', 'kamu', 2),
+(7, 'zzz', 'bW1t', '456464', 'zzz', 2),
+(10, 'qqq', 'cXFx', '345353', 'qqq', 2),
+(11, 'haha', 'unun', 'haha', 'haha', 2),
+(12, 'kksdhfk', '123', '1', 'kjsdhk', 2),
+(13, 'sdfnmqq', '11', '1', 'sdhfjnme', 2),
+(14, 'dddd', '44', '1', 'ddd', 2),
+(15, 'xxx', '11', '1', 'xxx', 2),
+(17, 'aha', 'bub', '23435', 'oho', 2),
+(18, 'trianwarx', 'gevnajnek', '16103020018', 'Muhammad Tri Anwarruddin', 2),
+(19, 'tambah', 'gnzonu', '36476', 'tambah', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbwaktu`
+-- Struktur dari tabel `tbwaktu`
 --
 
 CREATE TABLE `tbwaktu` (
@@ -237,7 +257,7 @@ CREATE TABLE `tbwaktu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbwaktu`
+-- Dumping data untuk tabel `tbwaktu`
 --
 
 INSERT INTO `tbwaktu` (`idwaktu`, `waktu`) VALUES
@@ -302,7 +322,7 @@ ALTER TABLE `tbwaktu`
 -- AUTO_INCREMENT for table `tbhari`
 --
 ALTER TABLE `tbhari`
-  MODIFY `idhari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idhari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tblab`
 --
@@ -312,18 +332,18 @@ ALTER TABLE `tblab`
 -- AUTO_INCREMENT for table `tbuser`
 --
 ALTER TABLE `tbuser`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `tbwaktu`
 --
 ALTER TABLE `tbwaktu`
   MODIFY `idwaktu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `tbjadwal`
+-- Ketidakleluasaan untuk tabel `tbjadwal`
 --
 ALTER TABLE `tbjadwal`
   ADD CONSTRAINT `fk_tbjadwal_tbhari1` FOREIGN KEY (`idhari`) REFERENCES `tbhari` (`idhari`) ON DELETE NO ACTION ON UPDATE NO ACTION,
