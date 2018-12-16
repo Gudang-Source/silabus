@@ -4,3 +4,7 @@
 3. Import silabus.sql ke database.
 4. Ubah konfigurasi Database di /silabus/pages/tables/config.php
 5. Buka di web browser http://localhost/silabus/
+
+
+# ![Screenshot1](https://i.imgur.com/TxyxScw.png) ![Screenshot2](https://i.imgur.com/6u4LKeA.png) ![Screenshot3](https://i.imgur.com/PbJO88A.png)
+
