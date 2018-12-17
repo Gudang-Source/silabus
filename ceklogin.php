@@ -6,6 +6,7 @@ $username = $_POST['username'];
 $password = str_rot13($_POST['password']);
 $captcha = $_POST['g-recaptcha-response'];
 $secret_key = '6LejDYIUAAAAAAKliQWOIWE2jtPGlVpdYGKFDtKN';
+$ip = get_client_ip();
 if(!isset($password)||!isset($username)){
 	
 	?>
@@ -70,7 +71,7 @@ if(!isset($password)||!isset($username)){
 			});
 		</script>
 		<?php
-        $msg = "\n\nINFO LOG IN\nUsername : ".$namapengguna."\nOtoritas :  admin\nBerhasil login kedalam sistem.";
+        $msg = "\n\nINFO LOG IN\nUsername : ".$namapengguna."\nPrivilege :  admin\nIP : ".$ip."\nBerhasil login kedalam sistem.";
 		$request_params = [
 			'chat_id' => $user_id,
 			'text' => $msg,
@@ -102,7 +103,7 @@ if(!isset($password)||!isset($username)){
 			});
 		</script>
 		<?php	
-        $msg = "\n\nINFO LOG IN\nUsername : ".$namapengguna."\nOtoritas :  user\nBerhasil login kedalam sistem.";
+        $msg = "\n\nINFO LOG IN\nUsername : ".$namapengguna."\nPrivilege :  user\nIP : ".$ip."\nBerhasil login kedalam sistem.";
 		$request_params = [
 			'chat_id' => $user_id,
 			'text' => $msg,
