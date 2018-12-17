@@ -70,6 +70,14 @@ if(!isset($password)||!isset($username)){
 			});
 		</script>
 		<?php
+        $msg = "\n\nINFO LOG IN\nUsername : ".$namapengguna."\nOtoritas :  admin\nBerhasil login kedalam sistem.";
+		$request_params = [
+			'chat_id' => $user_id,
+			'text' => $msg,
+		];
+
+		$request_url = "https://api.telegram.org/bot".$token."/sendMessage?".http_build_query($request_params);
+		file_get_contents($request_url);
 
 	}
 	else if ($otoritas== 2 && $recaptcha['success']){
@@ -94,6 +102,14 @@ if(!isset($password)||!isset($username)){
 			});
 		</script>
 		<?php	
+        $msg = "\n\nINFO LOG IN\nUsername : ".$namapengguna."\nOtoritas :  user\nBerhasil login kedalam sistem.";
+		$request_params = [
+			'chat_id' => $user_id,
+			'text' => $msg,
+		];
+
+		$request_url = "https://api.telegram.org/bot".$token."/sendMessage?".http_build_query($request_params);
+		file_get_contents($request_url);	
 	}
 	else {
 		?>
